@@ -618,303 +618,133 @@
         }
 
         /* ============================================================
-           RESPONSIVE FIX - HP & LAPTOP
+           ADMIN PANEL + RESPONSIVE FINAL FIX
            ============================================================ */
-
-        html {
-            width: 100%;
-            max-width: 100%;
-            overflow-x: hidden;
+        .admin-panel-overlay {
+            position: fixed; inset: 0; background: rgba(15,23,42,.72);
+            z-index: 5000; display: none; align-items: center; justify-content: center;
+            padding: 16px;
         }
-
-        body {
-            width: 100%;
-            max-width: 100%;
-            min-width: 0;
-            overflow-x: hidden;
+        .admin-panel-overlay.show { display: flex; }
+        .admin-panel-box {
+            width: min(1100px, 100%); max-height: 92vh; overflow: auto;
+            background: #fff; border-radius: 16px; padding: 22px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.25);
         }
-
-        img, video, iframe, input, select, textarea, button {
-            max-width: 100%;
+        .admin-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px; }
+        .admin-head h2 { margin:0; }
+        .admin-close { border:0; background:#eef2f7; width:40px; height:40px; border-radius:10px; cursor:pointer; font-size:18px; }
+        .admin-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:18px; }
+        .admin-stat { padding:16px; border:1px solid #e5e7eb; border-radius:12px; background:#f8fafc; }
+        .admin-stat small { color:#64748b; display:block; margin-bottom:5px; }
+        .admin-stat strong { font-size:1.45rem; }
+        .admin-actions { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px; }
+        .admin-note { background:#fff7ed; border:1px solid #fed7aa; color:#9a3412; padding:12px 14px; border-radius:10px; font-size:.9rem; margin-top:8px; }
+        .pin-overlay {
+            position:fixed; inset:0; background:rgba(15,23,42,.72); z-index:5100;
+            display:none; align-items:center; justify-content:center; padding:20px;
         }
+        .pin-overlay.show { display:flex; }
+        .pin-box { width:min(380px,100%); background:#fff; border-radius:16px; padding:24px; box-shadow:0 20px 60px rgba(0,0,0,.3); }
+        .pin-box h3 { margin:0 0 8px; }
+        .pin-box p { color:#64748b; margin:0 0 16px; }
+        .pin-input { width:100%; box-sizing:border-box; text-align:center; letter-spacing:8px; font-size:24px; padding:12px; border:1px solid #cbd5e1; border-radius:10px; }
+        .pin-actions { display:flex; gap:10px; margin-top:14px; }
+        .pin-actions button { flex:1; }
+        @media (max-width: 800px) { .admin-grid { grid-template-columns:repeat(2,1fr); } }
+        @media (max-width: 520px) { .admin-panel-box { padding:16px; } .admin-grid { grid-template-columns:1fr 1fr; gap:9px; } .admin-stat { padding:12px; } .admin-stat strong { font-size:1.15rem; } }
+        html, body { width:100%; max-width:100%; min-width:0; overflow-x:hidden; }
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-        header {
-            width: 100%;
-        }
-
-        .header-container {
-            width: 100%;
-            min-width: 0;
-        }
-
-        .logo {
-            min-width: 0;
-        }
-
-        .logo h1 {
-            min-width: 0;
-            overflow-wrap: anywhere;
-        }
-
-        nav {
-            min-width: 0;
-            max-width: 100%;
-        }
-
-        nav ul {
-            max-width: 100%;
-        }
-
-        .hero {
-            width: 100%;
-            max-width: 100%;
+        /* ============================================================
+           ADMIN DATA MANAGER
+           ============================================================ */
+        .admin-manager {
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
             overflow: hidden;
+            background: #fff;
+            margin-top: 4px;
         }
-
-        .hero .container {
-            width: 100%;
+        .admin-manager-head {
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:14px;
+            padding:16px;
+            border-bottom:1px solid #e5e7eb;
+            background:#f8fafc;
         }
-
-        .dashboard,
-        .main-content,
-        .card,
-        .stats-container {
-            min-width: 0;
-            max-width: 100%;
+        .admin-manager-head h3 { margin:0 0 3px; font-size:1.05rem; }
+        .admin-manager-head small { color:#64748b; }
+        .admin-filters {
+            display:flex;
+            gap:8px;
+            min-width:min(420px,100%);
         }
-
-        .table-responsive {
-            width: 100%;
-            max-width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
+        .admin-filters input,
+        .admin-filters select {
+            height:42px;
+            border:1px solid #cbd5e1;
+            border-radius:9px;
+            padding:0 11px;
+            background:#fff;
+            outline:none;
         }
-
-        /* Tabel tetap lengkap; yang digeser hanya area tabel */
-        .attendance-table {
-            width: 100%;
-            min-width: 950px;
+        .admin-filters input { flex:1; min-width:170px; }
+        .admin-filters input:focus,
+        .admin-filters select:focus {
+            border-color:#4361ee;
+            box-shadow:0 0 0 3px rgba(67,97,238,.12);
         }
-
-        @media (max-width: 768px) {
-            .container {
-                padding-left: 12px;
-                padding-right: 12px;
-            }
-
-            header {
-                padding: 10px 0;
-            }
-
-            .header-container {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 10px;
-            }
-
-            .logo {
-                justify-content: center;
-            }
-
-            .logo h1 {
-                font-size: 1.15rem;
-                text-align: center;
-            }
-
-            .logo img {
-                width: 34px;
-                height: 34px;
-                flex: 0 0 auto;
-            }
-
-            nav {
-                width: 100%;
-                overflow-x: auto;
-                overflow-y: hidden;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-            }
-
-            nav::-webkit-scrollbar {
-                display: none;
-            }
-
-            nav ul {
-                width: max-content;
-                min-width: 100%;
-                justify-content: center;
-                flex-wrap: nowrap;
-                gap: 8px;
-            }
-
-            nav ul li {
-                flex: 0 0 auto;
-            }
-
-            nav ul li a {
-                display: block;
-                padding: 7px 9px;
-                font-size: 0.78rem;
-                white-space: nowrap;
-            }
-
-            .hero {
-                margin: 12px 0;
-                border-radius: 8px;
-                padding: 35px 0;
-            }
-
-            .hero h2 {
-                font-size: 1.65rem;
-                line-height: 1.3;
-                margin-bottom: 14px;
-            }
-
-            .hero p {
-                font-size: 0.95rem;
-                margin-bottom: 20px;
-            }
-
-            .current-day {
-                font-size: 0.9rem;
-            }
-
-            .dashboard {
-                display: block;
-                width: 100%;
-                margin-top: 15px;
-            }
-
-            .main-content {
-                width: 100%;
-                padding: 0;
-                background: transparent;
-                box-shadow: none;
-            }
-
-            .stats-container {
-                width: 100%;
-                grid-template-columns: 1fr;
-                gap: 12px;
-                margin-bottom: 15px;
-            }
-
-            .stat-card {
-                width: 100%;
-                padding: 16px 12px;
-            }
-
-            .stat-card i {
-                font-size: 1.7rem;
-                margin-bottom: 8px;
-            }
-
-            .stat-card h4 {
-                font-size: 0.85rem;
-                margin-bottom: 5px;
-            }
-
-            .stat-card h3 {
-                font-size: 1.25rem;
-            }
-
-            .card {
-                width: 100%;
-                padding: 14px;
-                margin-bottom: 15px;
-                border-radius: 8px;
-            }
-
-            .attendance-form {
-                width: 100%;
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-
-            .btn-submit,
-            .cancel-edit {
-                grid-column: span 1;
-                width: 100%;
-            }
-
-            .form-control {
-                width: 100%;
-                font-size: 16px; /* mencegah auto-zoom pada iPhone */
-            }
-
-            .search-box {
-                width: 100%;
-            }
-
-            .class-header {
-                width: 100%;
-                margin-top: 15px;
-            }
-
-            .table-responsive {
-                width: 100%;
-                max-width: 100%;
-                border-radius: 6px;
-            }
-
-            .attendance-table {
-                min-width: 950px;
-            }
-
-            .toast {
-                left: 12px;
-                right: 12px;
-                bottom: 12px;
-                max-width: none;
-            }
+        .admin-table-wrap {
+            width:100%;
+            overflow-x:auto;
+            -webkit-overflow-scrolling:touch;
         }
-
-        @media (max-width: 400px) {
-            .container {
-                padding-left: 10px;
-                padding-right: 10px;
-            }
-
-            .logo h1 {
-                font-size: 1rem;
-            }
-
-            nav ul {
-                justify-content: flex-start;
-            }
-
-            nav ul li a {
-                font-size: 0.72rem;
-                padding: 6px 8px;
-            }
-
-            .hero {
-                padding: 28px 0;
-            }
-
-            .hero h2 {
-                font-size: 1.45rem;
-            }
-
-            .hero p {
-                font-size: 0.85rem;
-            }
-
-            .btn {
-                padding: 10px 18px;
-                font-size: 0.85rem;
-            }
+        .admin-table {
+            width:100%;
+            min-width:900px;
+            border-collapse:collapse;
+            font-size:.88rem;
         }
-
+        .admin-table th,
+        .admin-table td {
+            padding:11px 12px;
+            border-bottom:1px solid #edf0f4;
+            text-align:left;
+            vertical-align:middle;
+        }
+        .admin-table th {
+            background:#f8fafc;
+            color:#475569;
+            font-weight:700;
+            white-space:nowrap;
+        }
+        .admin-table tbody tr:hover { background:#f8fbff; }
+        .admin-empty { text-align:center !important; padding:30px !important; color:#64748b; }
+        .admin-action-group { display:flex; gap:6px; white-space:nowrap; }
+        .admin-edit-btn,
+        .admin-delete-btn {
+            border:0;
+            min-width:76px;
+            height:36px;
+            border-radius:8px;
+            cursor:pointer;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+        }
+        .admin-edit-btn { background:#e0e7ff; color:#3730a3; }
+        .admin-delete-btn { background:#fee2e2; color:#b91c1c; }
+        .admin-edit-btn:hover,
+        .admin-delete-btn:hover { filter:brightness(.96); transform:translateY(-1px); }
+        @media (max-width:700px) {
+            .admin-manager-head { align-items:stretch; flex-direction:column; }
+            .admin-filters { flex-direction:column; min-width:0; }
+            .admin-filters input { min-width:0; }
+        }
+        * { box-sizing:border-box; }
+        img, video, iframe, input, select, textarea, button { max-width:100%; }
     </style>
 </head>
 
@@ -941,6 +771,7 @@
                     <li><a href="#" id="navAttendance">Absensi</a></li>
                     <li><a href="#" id="navReport">Laporan</a></li>
                     <li><a href="#" id="navSettings">Pengaturan</a></li>
+                    <li><a href="#" id="navAdmin"><i class="fas fa-shield-halved"></i> Admin</a></li>
                     <li><a href="#" id="toggleDebug">Debug</a></li>
                 </ul>
             </nav>
@@ -1255,7 +1086,7 @@
                                 <th>Status</th>
                                 <th>Tanggal</th>
                                 <th>Catatan</th>
-                                <th>Aksi</th>
+                                
                             </tr>
                         </thead>
 
@@ -1297,7 +1128,7 @@
                                 <th>Status</th>
                                 <th>Tanggal</th>
                                 <th>Catatan</th>
-                                <th>Aksi</th>
+                                
                             </tr>
                         </thead>
 
@@ -1339,7 +1170,7 @@
                                 <th>Status</th>
                                 <th>Tanggal</th>
                                 <th>Catatan</th>
-                                <th>Aksi</th>
+                                
                             </tr>
                         </thead>
 
@@ -1366,6 +1197,87 @@
 
     <div class="loader" id="loader">
         <div class="spinner"></div>
+    </div>
+
+
+    <div class="pin-overlay" id="adminPinOverlay" aria-hidden="true">
+        <div class="pin-box">
+            <h3><i class="fas fa-lock"></i> Akses Admin</h3>
+            <p>Masukkan PIN admin untuk membuka panel pengelolaan.</p>
+            <input id="adminPinInput" class="pin-input" type="password" inputmode="numeric" maxlength="6" placeholder="••••••" autocomplete="off">
+            <div class="pin-actions">
+                <button class="btn" id="adminPinCancel" type="button">Batal</button>
+                <button class="btn btn-primary" id="adminPinSubmit" type="button">Buka Admin</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="admin-panel-overlay" id="adminPanelOverlay" aria-hidden="true">
+        <div class="admin-panel-box">
+            <div class="admin-head">
+                <div>
+                    <h2><i class="fas fa-shield-halved"></i> Panel Admin</h2>
+                    <small>Pengelolaan absensi Volly Ball x Skensala</small>
+                </div>
+                <button class="admin-close" id="adminClose" type="button" title="Tutup">&times;</button>
+            </div>
+            <div class="admin-grid">
+                <div class="admin-stat"><small>Total Data Absensi</small><strong id="adminTotalRecords">0</strong></div>
+                <div class="admin-stat"><small>Total Peserta</small><strong id="adminTotalStudents">0</strong></div>
+                <div class="admin-stat"><small>Hadir Hari Ini</small><strong id="adminTodayPresent">0</strong></div>
+                <div class="admin-stat"><small>Persentase Hadir</small><strong id="adminAttendanceRate">0%</strong></div>
+            </div>
+            <div style="background:#eef2ff;border:1px solid #c7d2fe;color:#3730a3;padding:12px 14px;border-radius:10px;margin-bottom:14px;font-weight:600;">
+                <i class="fas fa-shield-halved"></i> MODE ADMIN AKTIF — tombol Edit dan Hapus hanya tersedia di sini.
+            </div>
+
+            <div class="admin-actions">
+                <button class="btn btn-primary" id="adminRefresh" type="button"><i class="fas fa-sync"></i> Segarkan Data</button>
+                <button class="btn" id="adminExport" type="button"><i class="fas fa-file-csv"></i> Export CSV</button>
+                <button class="btn" id="adminBackup" type="button"><i class="fas fa-download"></i> Backup JSON</button>
+                <button class="btn" id="adminLogout" type="button"><i class="fas fa-lock"></i> Kunci Admin</button>
+            </div>
+
+            <div class="admin-manager">
+                <div class="admin-manager-head">
+                    <div>
+                        <h3><i class="fas fa-database"></i> Kelola Data Absensi</h3>
+                        <small>Pilih data untuk mengganti atau menghapus absensi.</small>
+                    </div>
+                    <div class="admin-filters">
+                        <input id="adminSearch" type="search" placeholder="Cari nama / kelas..." autocomplete="off">
+                        <select id="adminStatusFilter">
+                            <option value="">Semua Status</option>
+                            <option value="Hadir">Hadir</option>
+                            <option value="Izin">Izin</option>
+                            <option value="Sakit">Sakit</option>
+                            <option value="Alpa">Alpa</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Kelas</th>
+                                <th>Status</th>
+                                <th>Tanggal</th>
+                                <th>Catatan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminAttendanceList">
+                            <tr><td colspan="7" class="admin-empty">Memuat data...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="admin-note"><strong>Catatan:</strong> Di halaman biasa tombol Edit/Hapus memang sengaja tidak ditampilkan. Hanya Panel Admin yang memiliki tombol tersebut. Untuk keamanan sungguhan, Firestore Rules juga harus membatasi operasi update/delete.</div>
+        </div>
     </div>
 
     <script type="module">
@@ -1457,12 +1369,32 @@
         const clearSearchBtn =
             document.getElementById('clearSearch');
 
+        const navAdmin = document.getElementById('navAdmin');
+        const adminPinOverlay = document.getElementById('adminPinOverlay');
+        const adminPinInput = document.getElementById('adminPinInput');
+        const adminPinSubmit = document.getElementById('adminPinSubmit');
+        const adminPinCancel = document.getElementById('adminPinCancel');
+        const adminPanelOverlay = document.getElementById('adminPanelOverlay');
+        const adminClose = document.getElementById('adminClose');
+        const adminRefresh = document.getElementById('adminRefresh');
+        const adminExport = document.getElementById('adminExport');
+        const adminBackup = document.getElementById('adminBackup');
+        const adminLogout = document.getElementById('adminLogout');
+        const adminSearch = document.getElementById('adminSearch');
+        const adminStatusFilter = document.getElementById('adminStatusFilter');
+        const adminAttendanceList = document.getElementById('adminAttendanceList');
+
 
         // ============================================================
         // STATE PAGINATION
         // ============================================================
 
         const pageSize = 10;
+
+        // PIN admin: ganti angka ini jika ingin mengubah PIN.
+        const ADMIN_PIN = '123456';
+        let adminUnlocked = false;
+        let adminRecordsCache = [];
 
         const pagination = {
             10: {
@@ -1878,25 +1810,6 @@
                     ${notesHTML}
                 </td>
 
-                <td>
-                    <button
-                        class="action-btn edit-btn"
-                        title="Edit"
-                        data-action="edit"
-                        data-id="${id}"
-                    >
-                        <i class="fas fa-edit"></i>
-                    </button>
-
-                    <button
-                        class="action-btn delete-btn"
-                        title="Hapus"
-                        data-action="delete"
-                        data-id="${id}"
-                    >
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </td>
             `;
 
             return row;
@@ -2596,6 +2509,11 @@
 
         async function editAttendance(id) {
 
+            if (!adminUnlocked) {
+                showToast('Buka Admin terlebih dahulu.', 'error');
+                return;
+            }
+
             if (
                 !checkFirebaseConnection()
             ) {
@@ -2684,6 +2602,10 @@
                     'edit-mode'
                 );
 
+                if (adminPanelOverlay && adminPanelOverlay.classList.contains('show')) {
+                    closeAdminPanel();
+                }
+
                 attendanceFormCard.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
@@ -2714,6 +2636,11 @@
         // ============================================================
 
         async function deleteAttendance(id) {
+
+            if (!adminUnlocked) {
+                showToast('Buka Admin terlebih dahulu.', 'error');
+                return;
+            }
 
             if (
                 !confirm(
@@ -2756,6 +2683,13 @@
                     loadDashboardData(),
                     loadAttendance()
                 ]);
+
+                if (adminUnlocked) {
+                    await Promise.all([
+                        loadAdminStats(),
+                        loadAdminRecords()
+                    ]);
+                }
 
             } catch (error) {
 
@@ -3088,6 +3022,198 @@
                 );
             }
         );
+
+
+        // ============================================================
+        // ============================================================
+        // ADMIN - PIN + PANEL
+        // ============================================================
+
+        function openAdminPin() {
+            if (adminUnlocked) {
+                openAdminPanel();
+                return;
+            }
+            adminPinInput.value = '';
+            adminPinOverlay.classList.add('show');
+            adminPinOverlay.setAttribute('aria-hidden', 'false');
+            setTimeout(() => adminPinInput.focus(), 50);
+        }
+
+        function closeAdminPin() {
+            adminPinOverlay.classList.remove('show');
+            adminPinOverlay.setAttribute('aria-hidden', 'true');
+        }
+
+        async function openAdminPanel() {
+            if (!adminUnlocked) { openAdminPin(); return; }
+            adminPanelOverlay.classList.add('show');
+            adminPanelOverlay.setAttribute('aria-hidden', 'false');
+            await Promise.all([loadAdminStats(), loadAdminRecords()]);
+        }
+
+        function closeAdminPanel() {
+            adminPanelOverlay.classList.remove('show');
+            adminPanelOverlay.setAttribute('aria-hidden', 'true');
+        }
+
+        async function unlockAdmin() {
+            if (adminPinInput.value.trim() !== ADMIN_PIN) {
+                showToast('PIN admin salah.', 'error');
+                adminPinInput.value = '';
+                adminPinInput.focus();
+                return;
+            }
+            adminUnlocked = true;
+            closeAdminPin();
+            showToast('Mode Admin aktif.', 'success');
+            await loadAttendance();
+            await openAdminPanel();
+        }
+
+        function lockAdmin() {
+            adminUnlocked = false;
+            closeAdminPanel();
+            showToast('Mode Admin dikunci kembali.', 'success');
+            loadAttendance();
+        }
+
+        async function loadAdminStats() {
+            try {
+                const records = await getAllAttendanceRecords();
+                const students = new Set(records.map(r => String(r.name || '').trim().toUpperCase()).filter(Boolean));
+                const today = getLocalDateString();
+                const todayPresent = records.filter(r => r.date === today && r.status === 'Hadir').length;
+                const present = records.filter(r => r.status === 'Hadir').length;
+                const rate = records.length ? Math.round((present / records.length) * 100) : 0;
+                document.getElementById('adminTotalRecords').textContent = records.length;
+                document.getElementById('adminTotalStudents').textContent = students.size;
+                document.getElementById('adminTodayPresent').textContent = todayPresent;
+                document.getElementById('adminAttendanceRate').textContent = rate + '%';
+            } catch (error) {
+                showToast(`Gagal memuat panel admin: ${error.message}`, 'error', 5000);
+            }
+        }
+
+        function renderAdminRecords() {
+            if (!adminAttendanceList) return;
+
+            const keyword = String(adminSearch?.value || '').trim().toLowerCase();
+            const status = String(adminStatusFilter?.value || '');
+
+            const filtered = adminRecordsCache.filter(record => {
+                const haystack = [
+                    record.name,
+                    record.class,
+                    record.extracurricular,
+                    record.status,
+                    record.date,
+                    record.notes
+                ].map(v => String(v || '').toLowerCase()).join(' ');
+                return (!keyword || haystack.includes(keyword)) &&
+                       (!status || record.status === status);
+            });
+
+            if (!filtered.length) {
+                adminAttendanceList.innerHTML =
+                    '<tr><td colspan="7" class="admin-empty">Data tidak ditemukan.</td></tr>';
+                return;
+            }
+
+            adminAttendanceList.innerHTML = filtered.map((record, index) => {
+                const id = encodeURIComponent(record.id);
+                const notes = String(record.notes || '').trim();
+                return `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td><strong>${escapeHTML(record.name || '-')}</strong></td>
+                        <td>${escapeHTML(record.class || '-')}</td>
+                        <td>${getStatusBadge(record.status)}</td>
+                        <td>${escapeHTML(formatDate(record.date))}</td>
+                        <td>${escapeHTML(notes && notes !== 'Tidak ada catatan' ? notes : '-')}</td>
+                        <td>
+                            <div class="admin-action-group">
+                                <button class="admin-edit-btn" type="button"
+                                    title="Ganti/Edit data"
+                                    data-action="edit" data-id="${id}">
+                                    <i class="fas fa-pen"></i> Edit
+                                </button>
+                                <button class="admin-delete-btn" type="button"
+                                    title="Hapus data"
+                                    data-action="delete" data-id="${id}">
+                                    <i class="fas fa-trash"></i> Hapus
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        async function loadAdminRecords() {
+            try {
+                adminAttendanceList.innerHTML =
+                    '<tr><td colspan="7" class="admin-empty">Memuat data...</td></tr>';
+
+                adminRecordsCache = await getAllAttendanceRecords();
+
+                adminRecordsCache.sort((a, b) => {
+                    const dateCompare = String(b.date || '').localeCompare(String(a.date || ''));
+                    if (dateCompare !== 0) return dateCompare;
+                    return String(a.name || '').localeCompare(String(b.name || ''));
+                });
+
+                renderAdminRecords();
+            } catch (error) {
+                console.error('Error admin records:', error);
+                adminAttendanceList.innerHTML =
+                    `<tr><td colspan="7" class="admin-empty">Gagal memuat data: ${escapeHTML(error.message)}</td></tr>`;
+            }
+        }
+
+        async function exportAdminCSV() {
+            try {
+                const records = await getAllAttendanceRecords();
+                if (!records.length) { showToast('Belum ada data untuk diekspor.', 'info'); return; }
+                const headers = ['Nama','Kelas','Ekstrakurikuler','Status','Tanggal','Catatan'];
+                const rows = records.map(r => [r.name || '', r.class || '', r.extracurricular || '', r.status || '', r.date || '', r.notes || '']);
+                const csv = [headers, ...rows].map(row => row.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n');
+                const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a'); a.href = url; a.download = `backup-absensi-${getLocalDateString()}.csv`; a.click();
+                URL.revokeObjectURL(url);
+                showToast('CSV berhasil dibuat.', 'success');
+            } catch (error) { showToast(`Export gagal: ${error.message}`, 'error', 5000); }
+        }
+
+        async function backupAdminJSON() {
+            try {
+                const records = await getAllAttendanceRecords();
+                const blob = new Blob([JSON.stringify(records, null, 2)], {type:'application/json;charset=utf-8;'});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a'); a.href = url; a.download = `backup-absensi-${getLocalDateString()}.json`; a.click();
+                URL.revokeObjectURL(url);
+                showToast('Backup JSON berhasil dibuat.', 'success');
+            } catch (error) { showToast(`Backup gagal: ${error.message}`, 'error', 5000); }
+        }
+
+        navAdmin.addEventListener('click', event => { event.preventDefault(); openAdminPin(); });
+        adminPinCancel.addEventListener('click', closeAdminPin);
+        adminPinSubmit.addEventListener('click', unlockAdmin);
+        adminPinInput.addEventListener('keydown', event => { if (event.key === 'Enter') unlockAdmin(); });
+        adminClose.addEventListener('click', closeAdminPanel);
+        adminRefresh.addEventListener('click', async () => {
+            await Promise.all([loadAdminStats(), loadAdminRecords(), loadAttendance(), loadDashboardData()]);
+            showToast('Data admin disegarkan.', 'success');
+        });
+        adminSearch.addEventListener('input', renderAdminRecords);
+        adminStatusFilter.addEventListener('change', renderAdminRecords);
+        adminExport.addEventListener('click', exportAdminCSV);
+        adminBackup.addEventListener('click', backupAdminJSON);
+        adminLogout.addEventListener('click', lockAdmin);
+
+        adminPinOverlay.addEventListener('click', event => { if (event.target === adminPinOverlay) closeAdminPin(); });
+        adminPanelOverlay.addEventListener('click', event => { if (event.target === adminPanelOverlay) closeAdminPanel(); });
 
 
         // ============================================================
