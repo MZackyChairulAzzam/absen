@@ -1,0 +1,2809 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Absen Ekstrakurikuler Volly Ball</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #4895ef;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 0;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .current-day {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            background-color: rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-color);
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .sidebar {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            height: fit-content;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar-menu li a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            color: var(--dark-color);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-menu li a:hover,
+        .sidebar-menu li a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .sidebar-menu li a i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .card-header h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .attendance-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: white;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(67,97,238,0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            grid-column: span 2;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-box input {
+            flex: 1;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .attendance-table {
+            border-collapse: separate !important;
+            border-spacing: 0 10px !important;
+            width: 100%;
+            margin-bottom: 10px;
+            min-width: 950px;
+        }
+
+        .attendance-table th {
+            background-color: var(--light-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding: 12px 15px !important;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .attendance-table td {
+            padding: 15px 20px !important;
+            vertical-align: middle;
+        }
+
+        .attendance-table tbody tr {
+            background-color: white;
+            transition: all 0.2s ease;
+        }
+
+        .attendance-table tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        .attendance-table tbody tr:hover {
+            background-color: #e0eaff;
+            box-shadow: 0 2px 8px rgba(67,97,238,0.15);
+        }
+
+        .notes-cell {
+            max-width: 250px;
+            min-width: 180px;
+            white-space: normal;
+            word-break: break-word;
+            line-height: 1.5;
+        }
+
+        .no-notes {
+            color: #999;
+            font-style: italic;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .stat-card h4 {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .stat-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .badge-success {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-warning {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-danger {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .class-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 20px 0 10px 0;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pagination-info {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .pagination-controls {
+            text-align: center;
+            margin: 15px 0 30px;
+        }
+
+        .load-more-btn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+        }
+
+        .load-more-btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        .load-more-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .action-btn {
+            padding: 6px 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            margin: 2px;
+            color: white;
+        }
+
+        .edit-btn {
+            background-color: var(--warning-color);
+        }
+
+        .delete-btn {
+            background-color: var(--danger-color);
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 20px !important;
+            color: #777;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            max-width: 400px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.error {
+            background-color: var(--danger-color);
+        }
+
+        .toast.success {
+            background-color: var(--success-color);
+        }
+
+        .loader {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255,255,255,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .debug-panel {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            max-width: 350px;
+            max-height: 250px;
+            overflow-y: auto;
+            z-index: 3000;
+            display: none;
+        }
+
+        .debug-panel.show {
+            display: block;
+        }
+
+        .edit-mode {
+            border: 2px solid var(--warning-color);
+        }
+
+        .cancel-edit {
+            display: none;
+            background-color: #6b7280;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            grid-column: span 2;
+        }
+
+        @media (max-width: 992px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .attendance-form {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-submit,
+            .cancel-edit {
+                grid-column: span 1;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .class-header {
+                flex-direction: column;
+                gap: 5px;
+                text-align: center;
+            }
+
+            .card-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .toast {
+                left: 20px;
+                right: 20px;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="debug-panel" id="debugPanel">
+        <div id="debugContent">Firebase Status: Loading...</div>
+    </div>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img
+                    src="logo.jpg"
+                    alt="Logo Volly Ball"
+                    onerror="this.style.display='none'"
+                />
+                <h1>Volly Ball x Skensala</h1>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="#" id="navHome">Beranda</a></li>
+                    <li><a href="#" id="navAttendance">Absensi</a></li>
+                    <li><a href="#" id="navReport">Laporan</a></li>
+                    <li><a href="#" id="navSettings">Pengaturan</a></li>
+                    <li><a href="#" id="toggleDebug">Debug</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Sistem Absen Digital Ekstrakurikuler Volly Ball Skensala</h2>
+            <p>Yang penting tuh absen, bukan bayar kas 😄</p>
+
+            <div class="current-day" id="currentDay"></div>
+
+            <br><br>
+
+            <a href="#" class="btn btn-primary" id="attendanceBtn">
+                <i class="fas fa-clipboard-check"></i>
+                Absen Sekarang
+            </a>
+        </div>
+    </section>
+
+    <div class="container dashboard">
+
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+
+                <li>
+                    <a href="#" class="active">
+                        <i class="fas fa-home"></i>
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" id="sidebarAttendance">
+                        <i class="fas fa-clipboard-check"></i>
+                        Absensi
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" id="sidebarParticipants">
+                        <i class="fas fa-users"></i>
+                        Peserta
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" id="sidebarReport">
+                        <i class="fas fa-chart-bar"></i>
+                        Laporan
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" id="sidebarSettings">
+                        <i class="fas fa-cog"></i>
+                        Pengaturan
+                    </a>
+                </li>
+
+            </ul>
+        </aside>
+
+        <main class="main-content">
+
+            <!-- STATISTIK -->
+            <div class="stats-container">
+
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <h4>Total Peserta</h4>
+                    <h3 id="totalStudents">0</h3>
+                </div>
+
+                <div class="stat-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h4>Kehadiran Hari Ini</h4>
+                    <h3 id="todayAttendance">0</h3>
+                </div>
+
+                <div class="stat-card">
+                    <i class="fas fa-percentage"></i>
+                    <h4>Rata-rata Kehadiran</h4>
+                    <h3 id="attendanceRate">0%</h3>
+                </div>
+
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
+                    <h4>Sesi Aktif</h4>
+                    <h3 id="activeSession">15:00 - 17:00</h3>
+                </div>
+
+                <div class="stat-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h4>Jadwal Latihan</h4>
+                    <h3 id="scheduleInfo">Senin & Rabu</h3>
+                </div>
+
+                <div class="stat-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h4>Bayar Kas</h4>
+                    <h3 id="paymentInfo">Rp 1.000 / Latihan</h3>
+                </div>
+
+            </div>
+
+            <!-- FORM ABSENSI -->
+            <div class="card" id="attendanceFormCard">
+
+                <div class="card-header">
+                    <h3 id="formTitle">
+                        <i class="fas fa-clipboard-check"></i>
+                        Formulir Absensi
+                    </h3>
+                </div>
+
+                <form id="attendanceForm" class="attendance-form">
+
+                    <div class="form-group">
+                        <label for="studentName">
+                            Nama Peserta (HURUF KAPITAL)
+                        </label>
+
+                        <input
+                            type="text"
+                            id="studentName"
+                            class="form-control"
+                            placeholder="Contoh: BUDI SANTOSO"
+                            required
+                            autocomplete="off"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentClass">Kelas</label>
+
+                        <select id="studentClass" class="form-control" required>
+                            <option value="">Pilih Kelas</option>
+
+                            <optgroup label="Kelas 10">
+                                <option value="10 AKL 1">10 AKL 1</option>
+                                <option value="10 AKL 2">10 AKL 2</option>
+                                <option value="10 AKL 3">10 AKL 3</option>
+                                <option value="10 AKL 4">10 AKL 4</option>
+                                <option value="10 AKL 5">10 AKL 5</option>
+                                <option value="10 MPLB 1">10 MPLB 1</option>
+                                <option value="10 MPLB 2">10 MPLB 2</option>
+                                <option value="10 MPLB 3">10 MPLB 3</option>
+                                <option value="10 MPLB 4">10 MPLB 4</option>
+                                <option value="10 BDP 1">10 BDP 1</option>
+                                <option value="10 BDP 2">10 BDP 2</option>
+                                <option value="10 BDP 3">10 BDP 3</option>
+                                <option value="10 DKV 1">10 DKV 1</option>
+                                <option value="10 DKV 2">10 DKV 2</option>
+                                <option value="10 TJKT 1">10 TJKT 1</option>
+                                <option value="10 TJKT 2">10 TJKT 2</option>
+                            </optgroup>
+
+                            <optgroup label="Kelas 11">
+                                <option value="11 AKL 1">11 AKL 1</option>
+                                <option value="11 AKL 2">11 AKL 2</option>
+                                <option value="11 AKL 3">11 AKL 3</option>
+                                <option value="11 AKL 4">11 AKL 4</option>
+                                <option value="11 AKL 5">11 AKL 5</option>
+                                <option value="11 MPLB 1">11 MPLB 1</option>
+                                <option value="11 MPLB 2">11 MPLB 2</option>
+                                <option value="11 MPLB 3">11 MPLB 3</option>
+                                <option value="11 MPLB 4">11 MPLB 4</option>
+                                <option value="11 BDP 1">11 BDP 1</option>
+                                <option value="11 BDP 2">11 BDP 2</option>
+                                <option value="11 BDP 3">11 BDP 3</option>
+                                <option value="11 DKV 1">11 DKV 1</option>
+                                <option value="11 DKV 2">11 DKV 2</option>
+                                <option value="11 TJKT 1">11 TJKT 1</option>
+                                <option value="11 TJKT 2">11 TJKT 2</option>
+                            </optgroup>
+
+                            <optgroup label="Kelas 12">
+                                <option value="12 AKL 1">12 AKL 1</option>
+                                <option value="12 AKL 2">12 AKL 2</option>
+                                <option value="12 AKL 3">12 AKL 3</option>
+                                <option value="12 AKL 4">12 AKL 4</option>
+                                <option value="12 AKL 5">12 AKL 5</option>
+                                <option value="12 MPLB 1">12 MPLB 1</option>
+                                <option value="12 MPLB 2">12 MPLB 2</option>
+                                <option value="12 MPLB 3">12 MPLB 3</option>
+                                <option value="12 MPLB 4">12 MPLB 4</option>
+                                <option value="12 BDP 1">12 BDP 1</option>
+                                <option value="12 BDP 2">12 BDP 2</option>
+                                <option value="12 BDP 3">12 BDP 3</option>
+                                <option value="12 DKV 1">12 DKV 1</option>
+                                <option value="12 DKV 2">12 DKV 2</option>
+                                <option value="12 TJKT 1">12 TJKT 1</option>
+                                <option value="12 TJKT 2">12 TJKT 2</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="extracurricular">
+                            Ekstrakurikuler
+                        </label>
+
+                        <select id="extracurricular" class="form-control" required>
+                            <option value="">Pilih Ekstrakurikuler</option>
+                            <option value="Volly Ball">
+                                Volly Ball (Pa Cecep/Bu Ade)
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="attendanceStatus">
+                            Status Kehadiran
+                        </label>
+
+                        <select id="attendanceStatus" class="form-control" required>
+                            <option value="">Pilih Status</option>
+                            <option value="Hadir">Hadir</option>
+                            <option value="Izin">Izin</option>
+                            <option value="Sakit">Sakit</option>
+                            <option value="Alpa">Alpa</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="attendanceDate">Tanggal</label>
+
+                        <input
+                            type="date"
+                            id="attendanceDate"
+                            class="form-control"
+                            required
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Catatan</label>
+
+                        <textarea
+                            id="notes"
+                            class="form-control"
+                            rows="3"
+                            placeholder="Contoh: Datang terlambat, izin keperluan keluarga, dll."
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <i class="fas fa-save"></i>
+                        Simpan Absensi
+                    </button>
+
+                    <button type="button" class="cancel-edit" id="cancelEditBtn">
+                        <i class="fas fa-times"></i>
+                        Batal Edit
+                    </button>
+
+                </form>
+            </div>
+
+            <!-- DAFTAR KEHADIRAN -->
+            <div class="card" id="attendanceListCard">
+
+                <div class="card-header">
+                    <h3>
+                        <i class="fas fa-list"></i>
+                        Daftar Kehadiran
+                    </h3>
+
+                    <button class="btn btn-primary" id="refreshAttendance">
+                        <i class="fas fa-sync"></i>
+                        Segarkan
+                    </button>
+                </div>
+
+                <div class="search-box">
+                    <input
+                        type="text"
+                        id="searchAttendance"
+                        class="form-control"
+                        placeholder="Cari nama, kelas, atau catatan..."
+                    />
+
+                    <button class="btn btn-primary" id="clearSearch">
+                        <i class="fas fa-times"></i>
+                        Reset
+                    </button>
+                </div>
+
+                <!-- KELAS 10 -->
+                <div class="class-header">
+                    <span>
+                        <i class="fas fa-users"></i>
+                        Kelas 10
+                    </span>
+
+                    <span class="pagination-info" id="paginationInfo10">
+                        Memuat data...
+                    </span>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="attendance-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Kelas</th>
+                                <th>Ekstrakurikuler</th>
+                                <th>Status</th>
+                                <th>Tanggal</th>
+                                <th>Catatan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="attendanceList10"></tbody>
+                    </table>
+                </div>
+
+                <div class="pagination-controls">
+                    <button
+                        class="load-more-btn"
+                        id="loadMore10"
+                        data-class="10"
+                    >
+                        <i class="fas fa-plus"></i>
+                        Muat Lebih Banyak Kelas 10
+                    </button>
+                </div>
+
+                <!-- KELAS 11 -->
+                <div class="class-header">
+                    <span>
+                        <i class="fas fa-users"></i>
+                        Kelas 11
+                    </span>
+
+                    <span class="pagination-info" id="paginationInfo11">
+                        Memuat data...
+                    </span>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="attendance-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Kelas</th>
+                                <th>Ekstrakurikuler</th>
+                                <th>Status</th>
+                                <th>Tanggal</th>
+                                <th>Catatan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="attendanceList11"></tbody>
+                    </table>
+                </div>
+
+                <div class="pagination-controls">
+                    <button
+                        class="load-more-btn"
+                        id="loadMore11"
+                        data-class="11"
+                    >
+                        <i class="fas fa-plus"></i>
+                        Muat Lebih Banyak Kelas 11
+                    </button>
+                </div>
+
+                <!-- KELAS 12 -->
+                <div class="class-header">
+                    <span>
+                        <i class="fas fa-users"></i>
+                        Kelas 12
+                    </span>
+
+                    <span class="pagination-info" id="paginationInfo12">
+                        Memuat data...
+                    </span>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="attendance-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Kelas</th>
+                                <th>Ekstrakurikuler</th>
+                                <th>Status</th>
+                                <th>Tanggal</th>
+                                <th>Catatan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="attendanceList12"></tbody>
+                    </table>
+                </div>
+
+                <div class="pagination-controls">
+                    <button
+                        class="load-more-btn"
+                        id="loadMore12"
+                        data-class="12"
+                    >
+                        <i class="fas fa-plus"></i>
+                        Muat Lebih Banyak Kelas 12
+                    </button>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <script type="module">
+
+        import { initializeApp }
+            from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
+
+        import {
+            getFirestore,
+            collection,
+            addDoc,
+            getDocs,
+            getDoc,
+            deleteDoc,
+            doc,
+            query,
+            where,
+            orderBy,
+            limit,
+            startAfter,
+            serverTimestamp,
+            updateDoc
+        } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js';
+
+
+        // ============================================================
+        // FIREBASE
+        // ============================================================
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCP2CoMPbYojeh4fFDim2l1KAlduQKa5KU",
+            authDomain: "absensi-6aeea.firebaseapp.com",
+            projectId: "absensi-6aeea",
+            storageBucket: "absensi-6aeea.appspot.com",
+            messagingSenderId: "519667816686",
+            appId: "1:519667816686:web:d02baae365ad00a40dbbff"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+
+        // ============================================================
+        // ELEMENT
+        // ============================================================
+
+        const attendanceForm =
+            document.getElementById('attendanceForm');
+
+        const attendanceFormCard =
+            document.getElementById('attendanceFormCard');
+
+        const refreshAttendanceBtn =
+            document.getElementById('refreshAttendance');
+
+        const attendanceBtn =
+            document.getElementById('attendanceBtn');
+
+        const toast =
+            document.getElementById('toast');
+
+        const loader =
+            document.getElementById('loader');
+
+        const debugPanel =
+            document.getElementById('debugPanel');
+
+        const debugContent =
+            document.getElementById('debugContent');
+
+        const toggleDebugBtn =
+            document.getElementById('toggleDebug');
+
+        const currentDayEl =
+            document.getElementById('currentDay');
+
+        const submitBtn =
+            document.getElementById('submitBtn');
+
+        const cancelEditBtn =
+            document.getElementById('cancelEditBtn');
+
+        const formTitle =
+            document.getElementById('formTitle');
+
+        const searchInput =
+            document.getElementById('searchAttendance');
+
+        const clearSearchBtn =
+            document.getElementById('clearSearch');
+
+
+        // ============================================================
+        // STATE PAGINATION
+        // ============================================================
+
+        const pageSize = 10;
+
+        const pagination = {
+            10: {
+                lastVisible: null,
+                allLoaded: false,
+                displayed: 0,
+                records: []
+            },
+
+            11: {
+                lastVisible: null,
+                allLoaded: false,
+                displayed: 0,
+                records: []
+            },
+
+            12: {
+                lastVisible: null,
+                allLoaded: false,
+                displayed: 0,
+                records: []
+            }
+        };
+
+
+        let editingDocId = null;
+
+
+        // ============================================================
+        // DATE LOCAL
+        // ============================================================
+
+        function getLocalDateString(date = new Date()) {
+
+            const year = date.getFullYear();
+
+            const month =
+                String(date.getMonth() + 1).padStart(2, '0');
+
+            const day =
+                String(date.getDate()).padStart(2, '0');
+
+            return `${year}-${month}-${day}`;
+        }
+
+
+        document.getElementById('attendanceDate').value =
+            getLocalDateString();
+
+
+        // ============================================================
+        // CURRENT DAY
+        // ============================================================
+
+        function displayCurrentDay() {
+
+            const days = [
+                'Minggu',
+                'Senin',
+                'Selasa',
+                'Rabu',
+                'Kamis',
+                'Jumat',
+                'Sabtu'
+            ];
+
+            const months = [
+                'Januari',
+                'Februari',
+                'Maret',
+                'April',
+                'Mei',
+                'Juni',
+                'Juli',
+                'Agustus',
+                'September',
+                'Oktober',
+                'November',
+                'Desember'
+            ];
+
+            const now = new Date();
+
+            currentDayEl.textContent =
+                `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+        }
+
+
+        // ============================================================
+        // FORMAT DATE
+        // ============================================================
+
+        function formatDate(dateString) {
+
+            if (!dateString) return '-';
+
+            const parts =
+                String(dateString).split('-');
+
+            if (parts.length !== 3) {
+                return dateString;
+            }
+
+            const date =
+                new Date(
+                    Number(parts[0]),
+                    Number(parts[1]) - 1,
+                    Number(parts[2])
+                );
+
+            return date.toLocaleDateString('id-ID', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+
+        // ============================================================
+        // ESCAPE HTML
+        // ============================================================
+
+        function escapeHTML(value) {
+
+            if (
+                value === null ||
+                value === undefined
+            ) {
+                return '';
+            }
+
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+
+        // ============================================================
+        // DEBUG
+        // ============================================================
+
+        function updateDebug(message) {
+
+            console.log(message);
+
+            debugContent.innerHTML +=
+                '<br>' +
+                new Date().toLocaleTimeString('id-ID') +
+                ': ' +
+                escapeHTML(message);
+
+            debugContent.scrollTop =
+                debugContent.scrollHeight;
+        }
+
+
+        function checkFirebaseConnection() {
+
+            if (db) {
+
+                updateDebug(
+                    '✅ Firebase connected successfully'
+                );
+
+                return true;
+            }
+
+            updateDebug(
+                '❌ Firebase tidak terhubung'
+            );
+
+            return false;
+        }
+
+
+        // ============================================================
+        // LOADER
+        // ============================================================
+
+        function showLoader() {
+            loader.style.display = 'flex';
+        }
+
+
+        function hideLoader() {
+            loader.style.display = 'none';
+        }
+
+
+        // ============================================================
+        // TOAST
+        // ============================================================
+
+        let toastTimer;
+
+        function showToast(
+            message,
+            type = 'info',
+            duration = 3000
+        ) {
+
+            clearTimeout(toastTimer);
+
+            toast.textContent = message;
+
+            toast.className = 'toast show';
+
+            if (type === 'error') {
+                toast.classList.add('error');
+            }
+
+            if (type === 'success') {
+                toast.classList.add('success');
+            }
+
+            toastTimer = setTimeout(() => {
+
+                toast.classList.remove('show');
+
+                toast.className = 'toast';
+
+            }, duration);
+        }
+
+
+        // ============================================================
+        // RESET FORM
+        // ============================================================
+
+        function resetForm() {
+
+            editingDocId = null;
+
+            attendanceForm.reset();
+
+            document.getElementById(
+                'attendanceDate'
+            ).value =
+                getLocalDateString();
+
+            submitBtn.innerHTML =
+                '<i class="fas fa-save"></i> Simpan Absensi';
+
+            formTitle.innerHTML =
+                '<i class="fas fa-clipboard-check"></i> Formulir Absensi';
+
+            cancelEditBtn.style.display = 'none';
+
+            attendanceFormCard.classList.remove(
+                'edit-mode'
+            );
+        }
+
+
+        // ============================================================
+        // STATUS BADGE
+        // ============================================================
+
+        function getStatusBadge(status) {
+
+            const safeStatus =
+                escapeHTML(status);
+
+            if (status === 'Hadir') {
+
+                return `
+                    <span class="badge badge-success">
+                        Hadir
+                    </span>
+                `;
+            }
+
+            if (
+                status === 'Izin' ||
+                status === 'Sakit'
+            ) {
+
+                return `
+                    <span class="badge badge-warning">
+                        ${safeStatus}
+                    </span>
+                `;
+            }
+
+            return `
+                <span class="badge badge-danger">
+                    ${safeStatus || 'Alpa'}
+                </span>
+            `;
+        }
+
+
+        // ============================================================
+        // RESET PAGINATION
+        // ============================================================
+
+        function resetPagination(classNumber) {
+
+            pagination[classNumber] = {
+                lastVisible: null,
+                allLoaded: false,
+                displayed: 0,
+                records: []
+            };
+        }
+
+
+        // ============================================================
+        // GET CLASS QUERY
+        // ============================================================
+
+        function getClassQuery(
+            classNumber,
+            lastVisible = null
+        ) {
+
+            const start =
+                String(classNumber);
+
+            const end =
+                String(Number(classNumber) + 1);
+
+            const constraints = [
+                where('class', '>=', start),
+                where('class', '<', end),
+                orderBy('class'),
+                orderBy('name')
+            ];
+
+            if (lastVisible) {
+
+                constraints.push(
+                    startAfter(lastVisible)
+                );
+            }
+
+            constraints.push(
+                limit(pageSize)
+            );
+
+            return query(
+                collection(db, 'attendance'),
+                ...constraints
+            );
+        }
+
+
+        // ============================================================
+        // RENDER RECORD
+        // ============================================================
+
+        function createRow(data, number) {
+
+            const row =
+                document.createElement('tr');
+
+            const id =
+                encodeURIComponent(data.id);
+
+            const notes =
+                String(data.notes || '').trim();
+
+            const notesHTML =
+                notes &&
+                notes !== 'Tidak ada catatan'
+                    ? `
+                        <span>
+                            ${escapeHTML(notes)}
+                        </span>
+                    `
+                    : `
+                        <span class="no-notes">
+                            Tidak ada catatan
+                        </span>
+                    `;
+
+            row.innerHTML = `
+                <td>${number}</td>
+
+                <td>
+                    ${escapeHTML(data.name || '-')}
+                </td>
+
+                <td>
+                    ${escapeHTML(data.class || '-')}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        data.extracurricular || '-'
+                    )}
+                </td>
+
+                <td>
+                    ${getStatusBadge(data.status)}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        formatDate(data.date)
+                    )}
+                </td>
+
+                <td class="notes-cell">
+                    <i
+                        class="fas fa-note-sticky"
+                        style="color:#4361ee;margin-right:5px;"
+                    ></i>
+                    ${notesHTML}
+                </td>
+
+                <td>
+                    <button
+                        class="action-btn edit-btn"
+                        title="Edit"
+                        data-action="edit"
+                        data-id="${id}"
+                    >
+                        <i class="fas fa-edit"></i>
+                    </button>
+
+                    <button
+                        class="action-btn delete-btn"
+                        title="Hapus"
+                        data-action="delete"
+                        data-id="${id}"
+                    >
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            `;
+
+            return row;
+        }
+
+
+        // ============================================================
+        // RENDER CLASS
+        // ============================================================
+
+        function renderClassList(classNumber) {
+
+            const list =
+                document.getElementById(
+                    `attendanceList${classNumber}`
+                );
+
+            const info =
+                document.getElementById(
+                    `paginationInfo${classNumber}`
+                );
+
+            const loadMoreBtn =
+                document.getElementById(
+                    `loadMore${classNumber}`
+                );
+
+            const state =
+                pagination[classNumber];
+
+            const search =
+                searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+            list.innerHTML = '';
+
+            let records =
+                [...state.records];
+
+            if (search) {
+
+                records =
+                    records.filter(record => {
+
+                        const name =
+                            String(
+                                record.name || ''
+                            ).toLowerCase();
+
+                        const studentClass =
+                            String(
+                                record.class || ''
+                            ).toLowerCase();
+
+                        const notes =
+                            String(
+                                record.notes || ''
+                            ).toLowerCase();
+
+                        const status =
+                            String(
+                                record.status || ''
+                            ).toLowerCase();
+
+                        return (
+                            name.includes(search) ||
+                            studentClass.includes(search) ||
+                            notes.includes(search) ||
+                            status.includes(search)
+                        );
+                    });
+            }
+
+            records.sort((a, b) => {
+
+                const nameA =
+                    String(a.name || '');
+
+                const nameB =
+                    String(b.name || '');
+
+                return nameA.localeCompare(
+                    nameB,
+                    'id'
+                );
+            });
+
+            if (records.length === 0) {
+
+                list.innerHTML = `
+                    <tr>
+                        <td
+                            colspan="8"
+                            class="empty-message"
+                        >
+                            ${
+                                search
+                                    ? 'Data yang dicari tidak ditemukan.'
+                                    : `Belum ada data absensi Kelas ${classNumber}.`
+                            }
+                        </td>
+                    </tr>
+                `;
+
+            } else {
+
+                records.forEach((data, index) => {
+
+                    list.appendChild(
+                        createRow(
+                            data,
+                            index + 1
+                        )
+                    );
+                });
+            }
+
+            info.textContent =
+                search
+                    ? `${records.length} data ditemukan`
+                    : `Menampilkan ${state.displayed} data`;
+
+            if (state.allLoaded) {
+
+                loadMoreBtn.disabled = true;
+
+                loadMoreBtn.innerHTML =
+                    `<i class="fas fa-check"></i>
+                     Semua Data Kelas ${classNumber} Telah Dimuat`;
+
+            } else {
+
+                loadMoreBtn.disabled = false;
+
+                loadMoreBtn.innerHTML =
+                    `<i class="fas fa-plus"></i>
+                     Muat Lebih Banyak Kelas ${classNumber}`;
+            }
+        }
+
+
+        // ============================================================
+        // LOAD ONE CLASS
+        // ============================================================
+
+        async function loadClassAttendance(
+            classNumber,
+            reset = false
+        ) {
+
+            if (!checkFirebaseConnection()) {
+                return;
+            }
+
+            if (reset) {
+                resetPagination(classNumber);
+            }
+
+            const state =
+                pagination[classNumber];
+
+            if (state.allLoaded) {
+
+                renderClassList(classNumber);
+
+                return;
+            }
+
+            try {
+
+                const q =
+                    getClassQuery(
+                        classNumber,
+                        state.lastVisible
+                    );
+
+                const snapshot =
+                    await getDocs(q);
+
+                if (snapshot.empty) {
+
+                    state.allLoaded = true;
+
+                    renderClassList(classNumber);
+
+                    return;
+                }
+
+                state.lastVisible =
+                    snapshot.docs[
+                        snapshot.docs.length - 1
+                    ];
+
+                snapshot.docs.forEach(
+                    firebaseDoc => {
+
+                        const data = {
+                            id: firebaseDoc.id,
+                            ...firebaseDoc.data()
+                        };
+
+                        state.records.push(data);
+
+                        state.displayed++;
+                    }
+                );
+
+                if (
+                    snapshot.size < pageSize
+                ) {
+
+                    state.allLoaded = true;
+                }
+
+                renderClassList(classNumber);
+
+            } catch (error) {
+
+                console.error(
+                    `Error loading class ${classNumber}:`,
+                    error
+                );
+
+                showToast(
+                    `Gagal memuat Kelas ${classNumber}: ${error.message}`,
+                    'error',
+                    6000
+                );
+
+                updateDebug(
+                    `❌ Error Kelas ${classNumber}: ${error.message}`
+                );
+            }
+        }
+
+
+        // ============================================================
+        // LOAD ALL ATTENDANCE
+        // ============================================================
+
+        async function loadAttendance() {
+
+            if (!checkFirebaseConnection()) {
+                return;
+            }
+
+            showLoader();
+
+            try {
+
+                await Promise.all([
+                    loadClassAttendance(10, true),
+                    loadClassAttendance(11, true),
+                    loadClassAttendance(12, true)
+                ]);
+
+            } catch (error) {
+
+                console.error(
+                    'Error load attendance:',
+                    error
+                );
+
+                showToast(
+                    `Gagal memuat daftar absensi: ${error.message}`,
+                    'error',
+                    6000
+                );
+
+            } finally {
+
+                hideLoader();
+            }
+        }
+
+
+        // ============================================================
+        // LOAD MORE
+        // ============================================================
+
+        async function loadMoreAttendance(
+            classNumber
+        ) {
+
+            if (!pagination[classNumber]) {
+                return;
+            }
+
+            showLoader();
+
+            try {
+
+                await loadClassAttendance(
+                    classNumber,
+                    false
+                );
+
+            } finally {
+
+                hideLoader();
+            }
+        }
+
+
+        // ============================================================
+        // GET ALL DATA
+        // ============================================================
+
+        async function getAllAttendanceRecords() {
+
+            const snapshot =
+                await getDocs(
+                    collection(
+                        db,
+                        'attendance'
+                    )
+                );
+
+            return snapshot.docs.map(
+                firebaseDoc => ({
+                    id: firebaseDoc.id,
+                    ...firebaseDoc.data()
+                })
+            );
+        }
+
+
+        // ============================================================
+        // DASHBOARD
+        // ============================================================
+
+        async function loadDashboardData() {
+
+            if (!checkFirebaseConnection()) {
+                return;
+            }
+
+            try {
+
+                const records =
+                    await getAllAttendanceRecords();
+
+                const uniqueStudents =
+                    new Set();
+
+                records.forEach(record => {
+
+                    const name =
+                        String(
+                            record.name || ''
+                        )
+                        .trim()
+                        .toUpperCase();
+
+                    if (name) {
+                        uniqueStudents.add(name);
+                    }
+                });
+
+                document.getElementById(
+                    'totalStudents'
+                ).textContent =
+                    uniqueStudents.size;
+
+
+                const todayDate =
+                    getLocalDateString();
+
+                const todayRecords =
+                    records.filter(
+                        record =>
+                            record.date === todayDate
+                    );
+
+                document.getElementById(
+                    'todayAttendance'
+                ).textContent =
+                    todayRecords.length;
+
+
+                const hadirRecords =
+                    records.filter(
+                        record =>
+                            record.status === 'Hadir'
+                    );
+
+                const attendanceRate =
+                    records.length > 0
+                        ? Math.round(
+                            (
+                                hadirRecords.length /
+                                records.length
+                            ) * 100
+                        )
+                        : 0;
+
+                document.getElementById(
+                    'attendanceRate'
+                ).textContent =
+                    `${attendanceRate}%`;
+
+                updateDebug(
+                    `📊 Statistik: ${records.length} total absensi`
+                );
+
+            } catch (error) {
+
+                console.error(
+                    'Error dashboard:',
+                    error
+                );
+
+                showToast(
+                    `Gagal memuat statistik: ${error.message}`,
+                    'error',
+                    5000
+                );
+            }
+        }
+
+
+        // ============================================================
+        // CEK DUPLIKAT
+        // ============================================================
+
+        async function checkDuplicate(
+            name,
+            date,
+            extracurricular,
+            excludeId = null
+        ) {
+
+            const q =
+                query(
+                    collection(
+                        db,
+                        'attendance'
+                    ),
+                    where(
+                        'name',
+                        '==',
+                        name
+                    ),
+                    where(
+                        'date',
+                        '==',
+                        date
+                    ),
+                    where(
+                        'extracurricular',
+                        '==',
+                        extracurricular
+                    )
+                );
+
+            const snapshot =
+                await getDocs(q);
+
+            return snapshot.docs.some(
+                firebaseDoc =>
+                    firebaseDoc.id !== excludeId
+            );
+        }
+
+
+        // ============================================================
+        // SUBMIT
+        // ============================================================
+
+        attendanceForm.addEventListener(
+            'submit',
+            async event => {
+
+                event.preventDefault();
+
+                if (
+                    !checkFirebaseConnection()
+                ) {
+
+                    showToast(
+                        'Firebase tidak terhubung.',
+                        'error'
+                    );
+
+                    return;
+                }
+
+                const name =
+                    document.getElementById(
+                        'studentName'
+                    )
+                    .value
+                    .trim()
+                    .replace(/\s+/g, ' ')
+                    .toUpperCase();
+
+                const studentClass =
+                    document.getElementById(
+                        'studentClass'
+                    ).value;
+
+                const extracurricular =
+                    document.getElementById(
+                        'extracurricular'
+                    ).value;
+
+                const status =
+                    document.getElementById(
+                        'attendanceStatus'
+                    ).value;
+
+                const date =
+                    document.getElementById(
+                        'attendanceDate'
+                    ).value;
+
+                const notes =
+                    document.getElementById(
+                        'notes'
+                    )
+                    .value
+                    .trim();
+
+
+                if (
+                    !name ||
+                    !studentClass ||
+                    !extracurricular ||
+                    !status ||
+                    !date
+                ) {
+
+                    showToast(
+                        'Harap lengkapi semua field yang wajib diisi.',
+                        'error'
+                    );
+
+                    return;
+                }
+
+
+                showLoader();
+
+                submitBtn.disabled = true;
+
+                try {
+
+                    // ====================================================
+                    // EDIT
+                    // ====================================================
+
+                    if (editingDocId) {
+
+                        const duplicate =
+                            await checkDuplicate(
+                                name,
+                                date,
+                                extracurricular,
+                                editingDocId
+                            );
+
+                        if (duplicate) {
+
+                            showToast(
+                                'Data tersebut sudah memiliki absensi pada tanggal dan ekstrakurikuler yang sama.',
+                                'error',
+                                5000
+                            );
+
+                            return;
+                        }
+
+                        await updateDoc(
+                            doc(
+                                db,
+                                'attendance',
+                                editingDocId
+                            ),
+                            {
+                                name,
+                                class: studentClass,
+                                extracurricular,
+                                status,
+                                date,
+
+                                // CATATAN DISIMPAN KE FIRESTORE
+                                notes:
+                                    notes ||
+                                    'Tidak ada catatan',
+
+                                updatedAt:
+                                    serverTimestamp()
+                            }
+                        );
+
+                        showToast(
+                            'Absensi berhasil diperbarui!',
+                            'success'
+                        );
+
+                    }
+
+                    // ====================================================
+                    // TAMBAH
+                    // ====================================================
+
+                    else {
+
+                        const duplicate =
+                            await checkDuplicate(
+                                name,
+                                date,
+                                extracurricular
+                            );
+
+                        if (duplicate) {
+
+                            showToast(
+                                'Absensi untuk peserta ini pada tanggal tersebut sudah tercatat!',
+                                'error',
+                                5000
+                            );
+
+                            return;
+                        }
+
+                        await addDoc(
+                            collection(
+                                db,
+                                'attendance'
+                            ),
+                            {
+                                name,
+                                class: studentClass,
+                                extracurricular,
+                                status,
+                                date,
+
+                                // CATATAN DISIMPAN KE FIRESTORE
+                                notes:
+                                    notes ||
+                                    'Tidak ada catatan',
+
+                                recordedAt:
+                                    serverTimestamp(),
+
+                                updatedAt:
+                                    serverTimestamp()
+                            }
+                        );
+
+                        showToast(
+                            'Absensi berhasil disimpan!',
+                            'success'
+                        );
+                    }
+
+
+                    resetForm();
+
+                    await Promise.all([
+                        loadDashboardData(),
+                        loadAttendance()
+                    ]);
+
+                } catch (error) {
+
+                    console.error(
+                        'Error submit:',
+                        error
+                    );
+
+                    showToast(
+                        `Terjadi kesalahan: ${error.message}`,
+                        'error',
+                        6000
+                    );
+
+                    updateDebug(
+                        `❌ Error submit: ${error.message}`
+                    );
+
+                } finally {
+
+                    submitBtn.disabled = false;
+
+                    hideLoader();
+                }
+            }
+        );
+
+
+        // ============================================================
+        // EDIT
+        // ============================================================
+
+        async function editAttendance(id) {
+
+            if (
+                !checkFirebaseConnection()
+            ) {
+
+                showToast(
+                    'Firebase tidak terhubung.',
+                    'error'
+                );
+
+                return;
+            }
+
+            showLoader();
+
+            try {
+
+                const snapshot =
+                    await getDoc(
+                        doc(
+                            db,
+                            'attendance',
+                            id
+                        )
+                    );
+
+                if (!snapshot.exists()) {
+
+                    showToast(
+                        'Data tidak ditemukan.',
+                        'error'
+                    );
+
+                    return;
+                }
+
+                const data =
+                    snapshot.data();
+
+                document.getElementById(
+                    'studentName'
+                ).value =
+                    data.name || '';
+
+                document.getElementById(
+                    'studentClass'
+                ).value =
+                    data.class || '';
+
+                document.getElementById(
+                    'extracurricular'
+                ).value =
+                    data.extracurricular || '';
+
+                document.getElementById(
+                    'attendanceStatus'
+                ).value =
+                    data.status || '';
+
+                document.getElementById(
+                    'attendanceDate'
+                ).value =
+                    data.date ||
+                    getLocalDateString();
+
+                // AMBIL CATATAN DARI FIRESTORE
+                document.getElementById(
+                    'notes'
+                ).value =
+                    data.notes &&
+                    data.notes !== 'Tidak ada catatan'
+                        ? data.notes
+                        : '';
+
+                editingDocId = id;
+
+                submitBtn.innerHTML =
+                    '<i class="fas fa-edit"></i> Perbarui Absensi';
+
+                formTitle.innerHTML =
+                    '<i class="fas fa-edit"></i> Edit Absensi';
+
+                cancelEditBtn.style.display =
+                    'block';
+
+                attendanceFormCard.classList.add(
+                    'edit-mode'
+                );
+
+                attendanceFormCard.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+            } catch (error) {
+
+                console.error(
+                    'Error edit:',
+                    error
+                );
+
+                showToast(
+                    `Gagal memuat data: ${error.message}`,
+                    'error',
+                    5000
+                );
+
+            } finally {
+
+                hideLoader();
+            }
+        }
+
+
+        // ============================================================
+        // DELETE
+        // ============================================================
+
+        async function deleteAttendance(id) {
+
+            if (
+                !confirm(
+                    'Yakin ingin menghapus absensi ini? Data yang sudah dihapus tidak dapat dikembalikan.'
+                )
+            ) {
+                return;
+            }
+
+            if (
+                !checkFirebaseConnection()
+            ) {
+
+                showToast(
+                    'Firebase tidak terhubung.',
+                    'error'
+                );
+
+                return;
+            }
+
+            showLoader();
+
+            try {
+
+                await deleteDoc(
+                    doc(
+                        db,
+                        'attendance',
+                        id
+                    )
+                );
+
+                showToast(
+                    'Absensi berhasil dihapus.',
+                    'success'
+                );
+
+                await Promise.all([
+                    loadDashboardData(),
+                    loadAttendance()
+                ]);
+
+            } catch (error) {
+
+                console.error(
+                    'Error deleting:',
+                    error
+                );
+
+                showToast(
+                    `Gagal menghapus: ${error.message}`,
+                    'error',
+                    5000
+                );
+
+            } finally {
+
+                hideLoader();
+            }
+        }
+
+
+        // ============================================================
+        // EVENT TABLE ACTION
+        // ============================================================
+
+        document.addEventListener(
+            'click',
+            event => {
+
+                const button =
+                    event.target.closest(
+                        '[data-action]'
+                    );
+
+                if (!button) return;
+
+                const action =
+                    button.dataset.action;
+
+                const id =
+                    decodeURIComponent(
+                        button.dataset.id
+                    );
+
+                if (action === 'edit') {
+                    editAttendance(id);
+                }
+
+                if (action === 'delete') {
+                    deleteAttendance(id);
+                }
+            }
+        );
+
+
+        // ============================================================
+        // LOAD MORE BUTTON
+        // ============================================================
+
+        document.querySelectorAll(
+            '.load-more-btn'
+        )
+        .forEach(button => {
+
+            button.addEventListener(
+                'click',
+                () => {
+
+                    const classNumber =
+                        Number(
+                            button.dataset.class
+                        );
+
+                    loadMoreAttendance(
+                        classNumber
+                    );
+                }
+            );
+        });
+
+
+        // ============================================================
+        // SEARCH
+        // ============================================================
+
+        searchInput.addEventListener(
+            'input',
+            () => {
+
+                renderClassList(10);
+                renderClassList(11);
+                renderClassList(12);
+            }
+        );
+
+
+        clearSearchBtn.addEventListener(
+            'click',
+            event => {
+
+                event.preventDefault();
+
+                searchInput.value = '';
+
+                renderClassList(10);
+                renderClassList(11);
+                renderClassList(12);
+            }
+        );
+
+
+        // ============================================================
+        // REFRESH
+        // ============================================================
+
+        refreshAttendanceBtn.addEventListener(
+            'click',
+            async event => {
+
+                event.preventDefault();
+
+                await loadAttendance();
+
+                await loadDashboardData();
+
+                showToast(
+                    'Data berhasil disegarkan.',
+                    'success'
+                );
+            }
+        );
+
+
+        // ============================================================
+        // ABSEN SEKARANG
+        // ============================================================
+
+        attendanceBtn.addEventListener(
+            'click',
+            event => {
+
+                event.preventDefault();
+
+                resetForm();
+
+                attendanceFormCard.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+                setTimeout(() => {
+
+                    document.getElementById(
+                        'studentName'
+                    ).focus();
+
+                }, 500);
+            }
+        );
+
+
+        // ============================================================
+        // CANCEL EDIT
+        // ============================================================
+
+        cancelEditBtn.addEventListener(
+            'click',
+            () => {
+
+                resetForm();
+
+                showToast(
+                    'Mode edit dibatalkan.',
+                    'success'
+                );
+            }
+        );
+
+
+        // ============================================================
+        // DEBUG TOGGLE
+        // ============================================================
+
+        toggleDebugBtn.addEventListener(
+            'click',
+            event => {
+
+                event.preventDefault();
+
+                debugPanel.classList.toggle(
+                    'show'
+                );
+            }
+        );
+
+
+        // ============================================================
+        // NAVIGASI
+        // ============================================================
+
+        function scrollToAttendance() {
+
+            attendanceFormCard.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+
+        document.getElementById(
+            'navHome'
+        ).addEventListener(
+            'click',
+            event => {
+
+                event.preventDefault();
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        );
+
+
+        document.getElementById(
+            'navAttendance'
+        ).addEventListener(
+            'click',
+            event => {
+
+                event.preventDefault();
+
+                scrollToAttendance();
+            }
+        );
+
+
+        document.getElementById(
+            'sidebarAttendance'
+        ).addEventListener(
+            'click',
+            event => {
+
+                event.preventDefault();
+
+                scrollToAttendance();
+            }
+        );
+
+
+        document.getElementById(
+            'navReport'
+        ).addEventListener(
+            'click',
+            event => {
+
+                event.preventDefault();
+
+                document.getElementById(
+                    'attendanceListCard'
+                ).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        );
+
+
+        document.getElementById(
+            'sidebarReport'
+        ).addEventListener(
+            'click',
+            event => {
+
+                event.preventDefault();
+
+                document.getElementById(
+                    'attendanceListCard'
+                ).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        );
+
+
+        document.getElementById(
+            'sidebarParticipants'
+        ).addEventListener(
+            'click',
+            event => {
+
+                event.preventDefault();
+
+                document.getElementById(
+                    'attendanceListCard'
+                ).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        );
+
+
+        document.getElementById(
+            'navSettings'
+        ).addEventListener(
+            'click',
+            event => {
+
+                event.preventDefault();
+
+                showToast(
+                    'Pengaturan belum tersedia.',
+                    'info'
+                );
+            }
+        );
+
+
+        document.getElementById(
+            'sidebarSettings'
+        ).addEventListener(
+            'click',
+            event => {
+
+                event.preventDefault();
+
+                showToast(
+                    'Pengaturan belum tersedia.',
+                    'info'
+                );
+            }
+        );
+
+
+        // ============================================================
+        // INITIALIZE
+        // ============================================================
+
+        displayCurrentDay();
+
+        checkFirebaseConnection();
+
+        await loadDashboardData();
+
+        await loadAttendance();
+
+    </script>
+
+</body>
+</html>
